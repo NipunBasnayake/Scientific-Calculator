@@ -3,61 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scientific Calculator</title>
-    <link rel="stylesheet" href="SCalc.css">
+    <title>Dark Theme Calculator</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class = "container">
-        <div class="display">
-            <input type="text" placeholder="0">
+    <div class="calculator-container">
+        <div class="display-section">
+            <input id="display" type="text" placeholder="0" readonly>
         </div>
+        <div class="button-section">
+            <button id="clear-entry" class="control-button">CE</button>
+            <button onclick="calculateFactorial()" class="calc-button">x!</button>
+            <button class="calc-button">(</button>
+            <button class="calc-button">)</button>
+            <button class="calc-button">%</button>
+            <button id="clear-all" class="control-button">AC</button>
 
-        <div class="btns">
-            <div class="row">
-                <button class="btn">CE</button>
-                <button class="btn">x!</button>
-                <button class="btn">(</button>
-                <button class="btn">)</button>
-                <button class="btn">%</button>
-                <button class="btn">AC</button>
-            </div>
+            <button onclick="calculateSin()" class="calc-button">sin</button>
+            <button onclick="insertPi()" class="calc-button">π</button>
+            <button class="calc-button">7</button>
+            <button class="calc-button">8</button>
+            <button class="calc-button">9</button>
+            <button class="calc-button">÷</button>
 
-            <div class="row">
-                <button class="btn">sin</button>
-                <button class="btn">pi</button>
-                <button class="btn">7</button>
-                <button class="btn">8</button>
-                <button class="btn">9</button>
-                <button class="btn">/</button>
-            </div>
+            <button onclick="calculateCos()" class="calc-button">cos</button>
+            <button onclick="calculateLog()" class="calc-button">log</button>
+            <button class="calc-button">4</button>
+            <button class="calc-button">5</button>
+            <button class="calc-button">6</button>
+            <button class="calc-button">×</button>
 
-            <div class="row">
-                <button class="btn">cos</button>
-                <button class="btn">log</button>
-                <button class="btn">4</button>
-                <button class="btn">5</button>
-                <button class="btn">6</button>
-                <button class="btn">*</button>
-            </div>
+            <button onclick="calculateTan()" class="calc-button">tan</button>
+            <button onclick="calculateSqrt()" class="calc-button">√</button>
+            <button class="calc-button">1</button>
+            <button class="calc-button">2</button>
+            <button class="calc-button">3</button>
+            <button class="calc-button">-</button>
 
-            <div class="row">
-                <button class="btn">tan</button>
-                <button class="btn">root</button>
-                <button class="btn">1</button>
-                <button class="btn">2</button>
-                <button class="btn">3</button>
-                <button class="btn">-</button>
-            </div>
-
-            <div class="row">
-                <button class="btn">e</button>
-                <button class="btn">x^</button>
-                <button class="btn">0</button>
-                <button class="btn">.</button>
-                <button class="btn">=</button>
-                <button class="btn">+</button>
-            </div>
+            <button onclick="insertE()" class="calc-button">e</button>
+            <button onclick="calculatePower()" class="calc-button">x<sup>y</sup></button>
+            <button class="calc-button">0</button>
+            <button class="calc-button">.</button>
+            <button id="evaluate" class="control-button">=</button>
+            <button class="calc-button">+</button>
         </div>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>
