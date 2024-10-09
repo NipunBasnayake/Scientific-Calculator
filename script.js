@@ -34,44 +34,85 @@ function clearScreen() {
 }
 
 function calculateSin() {
-    display.value = Math.sin(display.value);
+    let value = parseFloat(display.value);
+    if (!isNaN(value)) {
+        display.value = Math.sin(value);
+    } else {
+        display.value = "Error";
+    }
 }
 
 function calculateCos() {
-    display.value = Math.cos(display.value);
+    let value = parseFloat(display.value);
+    if (!isNaN(value)) {
+        display.value = Math.cos(value);
+    } else {
+        display.value = "Error";
+    }
 }
 
 function calculateTan() {
-    display.value = Math.tan(display.value);
+    let value = parseFloat(display.value);
+    if (!isNaN(value)) {
+        display.value = Math.tan(value);
+    } else {
+        display.value = "Error";
+    }
 }
 
 function calculateLog() {
-    display.value = Math.log(display.value);
+    let value = parseFloat(display.value);
+    if (!isNaN(value) && value > 0) {
+        display.value = Math.log(value);
+    } else {
+        display.value = "Error";
+    }
 }
 
 function calculateSqrt() {
-    display.value = Math.sqrt(display.value);
+    let value = parseFloat(display.value);
+    if (!isNaN(value) && value >= 0) {
+        display.value = Math.sqrt(value);
+    } else {
+        display.value = "Error";
+    }
 }
 
 function calculateFactorial() {
     let num = parseInt(display.value);
-    let result = 1;
-    for (let i = 1; i <= num; i++) {
-        result *= i;
+    if (num >= 0 && Number.isInteger(num)) {
+        let result = 1;
+        for (let i = 1; i <= num; i++) {
+            result *= i;
+        }
+        display.value = result;
+    } else {
+        display.value = "Error";
     }
-    display.value = result;
 }
 
 function insertPi() {
-    display.value += Math.PI;
+    if (display.value) {
+        display.value += Math.PI;
+    } else {
+        display.value = Math.PI;
+    }
 }
 
 function insertE() {
-    display.value += Math.E;
+    if (display.value) {
+        display.value += Math.E;
+    } else {
+        display.value = Math.E;
+    }
 }
 
 function calculatePower() {
-    let base = display.value;
-    let exponent = 2;
-    display.value = Math.pow(base, exponent);
+    let base = parseFloat(display.value);
+    let exponent = 2; 
+    if (!isNaN(base)) {
+        display.value = Math.pow(base, exponent);
+    } else {
+        display.value = "Error";
+    }
 }
