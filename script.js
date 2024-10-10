@@ -4,14 +4,39 @@ var buttons = document.querySelectorAll('.calc-button');
 buttons.forEach(button => {
     button.addEventListener('click', function(e) {
         let buttonText = e.target.innerText;
-        if (buttonText === '×') {
-            buttonText = '*';
-        } else if (buttonText === '÷') {
-            buttonText = '/';
-        }
-        display.value += buttonText;
+        processInput(buttonText);
     });
 });
+
+document.addEventListener('keydown', function(e) {
+    let key = e.key;
+
+    if (key === 'Enter') {
+        evaluateExpression();
+    } else if (key === 'Backspace') {
+        backspace();
+    } else if (key === 'Escape') {
+        clearScreen();
+    } else {
+        processInput(key);
+    }
+});
+
+function processInput(input) {
+    if (input === '×' || input === '*') {
+        input = '*';
+    } else if (input === '÷' || input === '/') {
+        input = '/';
+    } else if (input === 'π') {
+        input = Math.PI;
+    } else if (input === 'e') {
+        input = Math.E;
+    }
+
+    if (/[\d+\-*/().]/.test(input)) {
+        display.value += input;
+    }
+}
 
 document.getElementById('evaluate').addEventListener('click', evaluateExpression);
 document.getElementById('clear-all').addEventListener('click', clearScreen);
