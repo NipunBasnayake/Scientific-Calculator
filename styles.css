@@ -2,18 +2,20 @@ body {
     padding: 0;
     margin: 0;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: linear-gradient(135deg, #89c4f4, #1e3799);
+    background-color: #131920;
     font-family: 'Segoe UI', sans-serif;
+    color: #c9d1d9;
 }
 
 .calculator-container {
     padding: 40px;
-    border-radius: 20px;
-    box-shadow: 12px 12px 25px rgba(0, 0, 0, 0.3), -12px -12px 25px rgba(50, 50, 50, 0.2);
-    background: #2c3e50;
+    border-radius: 25px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
+    background: #161b22;
     width: 360px;
 }
 
@@ -22,16 +24,18 @@ body {
 }
 
 #display {
-    width: 94%;
+    max-width: 94%;
+    margin: auto auto;
+    margin-bottom: 15px;
     height: 90px;
     font-size: 38px;
     text-align: right;
     padding: 12px;
     border: none;
-    border-radius: 12px;
-    background: #34495e;
-    color: #ecf0f1;
-    box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.3), inset -5px -5px 10px rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    background-color: #0d1117;
+    color: #c9d1d9;
+    box-shadow: inset 2px 2px 5px rgba(40, 32, 61, 0.164), inset -2px -2px 5px rgba(105, 104, 107, 0.425);
 }
 
 .button-section {
@@ -46,40 +50,116 @@ button {
     font-size: 22px;
     border: none;
     border-radius: 10px;
-    background: #3c6382;
-    color: #ecf0f1;
+    background-color: #21262d;
+    color: #c9d1d9;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3), -2px -2px 4px rgba(114, 114, 114, 0.2);
-    transition: box-shadow 0.2s ease, background-color 0.2s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 button:hover {
-    background-color: #3b7690;
-    box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.3), inset -5px -5px 10px rgba(255, 255, 255, 0.1);
+    background-color: #30363d;
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.98);
+    background-color: #21262d;
 }
 
 .control-button {
-    background: #e74c3c;
+    background: #da3633;
+    color: white;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.themecontrolbutton {
+    font-size: small;
+    padding: 10px;
+    width: 180px;
+    margin-top: 50px;
+    border-radius: 30px;
+    background-color: #da3633;
     color: white;
 }
 
 .control-button:hover {
-    background: #c0392b;
+    background-color: #f85149;
 }
 
 #evaluate {
-    background: #27ae60;
+    background-color: #238636;
     color: white;
 }
 
 #evaluate:hover {
-    background: #229954;
+    background-color: #2ea043;
 }
 
 button.calc-button {
-    background: #2980b9;
+    background-color: #21262d;
     color: #ffffff;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 button.calc-button:hover {
-    background: #3498db;
+    background-color: #30363d;
+}
+
+body.light-theme {
+    background-color: #ffffff;
+    color: #333333;
+}
+
+body.light-theme .calculator-container {
+    background-color: #f9f9f9;
+    border: 1px solid #e1e4e8;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+body.light-theme #display {
+    background-color: #ffffff; 
+    color: #24292f;
+    border: 1px solid #e1e4e8;
+}
+
+body.light-theme button {
+    background-color: #e9ecef;
+    color: #24292f;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 -2px 4px rgba(255, 255, 255, 0.5);
+}
+
+body.light-theme button:hover {
+    background-color: #d1d5da;
+    transform: scale(1.05);
+}
+
+body.light-theme button:active {
+    transform: scale(0.98);
+    background-color: #e2e6ea;
+}
+
+body.light-theme .control-button {
+    background-color: #dc3545;
+    color: white;
+}
+
+body.light-theme .control-button:hover {
+    background-color: #c82333;
+}
+
+body.light-theme #evaluate {
+    background-color: #28a745;
+    color: white;
+}
+
+body.light-theme #evaluate:hover {
+    background-color: #218838;
+}
+
+body.light-theme button.calc-button {
+    background-color: #e9ecef;
+}
+
+body.light-theme button.calc-button:hover {
+    background-color: #d1d5da;
 }

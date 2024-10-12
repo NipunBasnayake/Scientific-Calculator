@@ -1,6 +1,16 @@
 var display = document.querySelector('#display');
 var buttons = document.querySelectorAll('.calc-button');
 
+document.getElementById('theme-toggle').addEventListener('click', function() {
+    document.body.classList.toggle('light-theme');
+    
+    if (document.body.classList.contains('light-theme')) {
+        this.textContent = 'Switch to Dark Theme';
+    } else {
+        this.textContent = 'Switch to Light Theme';
+    }
+});
+
 buttons.forEach(button => {
     button.addEventListener('click', function(e) {
         let buttonText = e.target.innerText;
@@ -11,14 +21,17 @@ buttons.forEach(button => {
 document.addEventListener('keydown', function(e) {
     let key = e.key;
 
-    if (key === 'Enter') {
+    if (key === 'Enter' || key === '=') {
+        e.preventDefault();
         evaluateExpression();
     } else if (key === 'Backspace') {
-        backspace();
-    } else if (key === 'Escape') {
-        clearScreen();
-    } else {
-        processInput(key);
+        e.preventDefault();
+        backspace(); 
+    } else if (key === 'Delete') {
+        e.preventDefault();
+        clearScreen(); 
+    } else if (/[\d+\-*/().]/.test(key)) {
+        processInput(key); 
     }
 });
 
@@ -39,9 +52,6 @@ function processInput(input) {
 }
 
 document.getElementById('evaluate').addEventListener('click', evaluateExpression);
-document.getElementById('clear-all').addEventListener('click', clearScreen);
-document.getElementById('clear-entry').addEventListener('click', backspace);
-
 function evaluateExpression() {
     try {
         display.value = eval(display.value);
@@ -50,10 +60,12 @@ function evaluateExpression() {
     }
 }
 
+document.getElementById('clear-entry').addEventListener('click', backspace);
 function backspace() {
     display.value = display.value.slice(0, -1);
 }
 
+document.getElementById('clear-all').addEventListener('click', clearScreen);
 function clearScreen() {
     display.value = '';
 }
@@ -104,40 +116,39 @@ function calculateSqrt() {
 }
 
 function calculateFactorial() {
-    let num = parseInt(display.value);
-    if (num >= 0 && Number.isInteger(num)) {
-        let result = 1;
-        for (let i = 1; i <= num; i++) {
-            result *= i;
-        }
-        display.value = result;
+    let value = parseInt(display.value);
+    if (!isNaN(value) && value >= 0) {
+        display.value = factorial(value);
     } else {
         display.value = "Error";
     }
 }
 
-function insertPi() {
-    if (display.value) {
-        display.value += Math.PI;
+function factorial(n) {
+    if (n === 0 || n === 1) {
+        return 1;
     } else {
-        display.value = Math.PI;
-    }
-}
-
-function insertE() {
-    if (display.value) {
-        display.value += Math.E;
-    } else {
-        display.value = Math.E;
+        return n * factorial(n - 1);
     }
 }
 
 function calculatePower() {
-    let base = parseFloat(display.value);
-    let exponent = 2; 
-    if (!isNaN(base)) {
-        display.value = Math.pow(base, exponent);
-    } else {
-        display.value = "Error";
+    let value = display.value.split('^');
+    if (value.length === 2) {
+        let base = parseFloat(value[0]);
+        let exponent = parseFloat(value[1]);
+        if (!isNaN(base) && !isNaN(exponent)) {
+            display.value = Math.pow(base, exponent);
+        } else {
+            display.value = "Error";
+        }
     }
+}
+
+function insertPi() {
+    display.value += Math.PI;
+}
+
+function insertE() {
+    display.value += Math.E;
 }
